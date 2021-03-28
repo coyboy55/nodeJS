@@ -44,6 +44,8 @@ function onDataReceived(text) {
     hello(text.split(" ")[1]);
   }else if (text.trim(" ") === 'help'){
     help();
+  }else if(text.trim(" ") === 'list'){
+    list();
   }
   else{
     unknownCommand(text);
@@ -83,10 +85,27 @@ function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
 }
-
-// show user list of command "command which u can use"
+/*
+ show user list of command "command which u can use"
+ help
+ */
 function help(){
   console.log("command which u can enter:"+"\n"+"hello"+"\n"+"exit OR quit"+"\n"+"help");
+}
+/**
+ * list
+ *
+ * @returns {void}
+ */
+ function list(){
+let tasks=['hello','help','exit OR quit','list']
+  for(let i=0;i<tasks.length;i++){
+    console.log(i+'-'+tasks[i]);
+    
+  }
+    
+  
+ 
 }
 
 // The following line starts the application
