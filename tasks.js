@@ -48,6 +48,10 @@ function onDataReceived(text) {
     list();
   }else if(text.split(" ")[0] === 'add'){
     add(text.split(" ")[1]);
+  }else if(text.trim(" ") === 'remove'){
+    tasks.pop();
+  }else if(text.split(" ")[0] === 'remove'){
+    tasks.splice(text.split(" ")[1],1);
   }
   else{
     unknownCommand(text);
