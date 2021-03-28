@@ -94,6 +94,7 @@ function quit(){
 /*
  show user list of command "command which u can use"
  help
+ remove u canremove any task from the list by remove to remove last item or remove 1 or 2 or 3 to remove from specific index
  */
 function help(){
   console.log("command which u can enter:"+"\n"+"hello"+"\n"+"exit OR quit"+"\n"+"help");
