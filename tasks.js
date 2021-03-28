@@ -34,14 +34,15 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  console.log("hello "+text);
+ // const text1=text.splite("");
+ // console.log("hello "+text+"!");
  // text.replace(text,text+"\n");
-  if (text.trim() === 'quit' || text.trim() === 'exit') {
+  if (text.trim(" ") === 'quit' || text.trim(" ") === 'exit') {
     quit();
   }
-  else if(text.trim().split("")[0] === 'hello'){
-    hello();
-  }else if (text.trim() === 'help'){
+  else if(text.split(" ")[0] === 'hello'){
+    hello(text.split(" ")[1]);
+  }else if (text.trim(" ") === 'help'){
     help();
   }
   else{
@@ -64,11 +65,12 @@ function unknownCommand(c){
 
 /**
  * Says hello
- *
+ *when ur command have one word 'hello' u will get 'hello!' between if ur command have 2 word lik 'hello fakher' u will get 'hello faher!'
  * @returns {void}
  */
-function hello(){
+function hello(t=""){
   console.log('hello!')
+  console.log(`hello ${t}!`);
 }
 
 
