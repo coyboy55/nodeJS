@@ -34,10 +34,12 @@ function startApp(name){
  * @returns {void}
  */
 function onDataReceived(text) {
-  if (text === 'quit\n' || text === 'exit\n') {
+  if (text === "quit\n" || text === 'exit\n') {
     quit();
   }
   else if(text === 'hello\n'){
+    hello();
+  }else if (text == 'help\n'){
     hello();
   }
   else{
@@ -76,6 +78,11 @@ function hello(){
 function quit(){
   console.log('Quitting now, goodbye!')
   process.exit();
+}
+
+// show user list of command
+function help(){
+  console.log("command which u can enter:"+"\n"+"hello"+"\n"+"exit OR quit"+"\n"+"help");
 }
 
 // The following line starts the application
