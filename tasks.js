@@ -51,7 +51,7 @@ function onDataReceived(text) {
   }else if(text.trim(" ") === 'remove'){
     tasks.pop();
   }else if(text.split(" ")[0] === 'remove'){
-    tasks.splice(text.split(" ")[1],1);
+    removeI(text.split(" ")[1])
   }
   else{
     unknownCommand(text);
@@ -120,6 +120,18 @@ function help(){
  function add(c){
   
   tasks.push(c);
+  console.log(c+"was added");
+}
+
+/*
+
+ removeI
+ */
+ function removeI(c){
+   if(c>tasks.length-1){
+     console.log("number does not exist");
+   }
+   tasks.splice(c,1);
 }
 
 // The following line starts the application
