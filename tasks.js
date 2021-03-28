@@ -80,7 +80,7 @@ function quit(){
   process.exit();
 }
 
-// show user list of command
+// show user list of command "command which u can use"
 function help(){
   console.log("command which u can enter:"+"\n"+"hello"+"\n"+"exit OR quit"+"\n"+"help");
 }
