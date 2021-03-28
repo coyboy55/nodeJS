@@ -35,13 +35,14 @@ function startApp(name){
  */
 function onDataReceived(text) {
   console.log("hello "+text);
-  if (text === "quit\n" || text === 'exit\n') {
+ // text.replace(text,text+"\n");
+  if (text.trim() === 'quit' || text.trim() === 'exit') {
     quit();
   }
-  else if(text === 'hello\n'){
+  else if(text.trim().split("")[0] === 'hello'){
     hello();
-  }else if (text == 'help\n'){
-    hello();
+  }else if (text.trim() === 'help'){
+    help();
   }
   else{
     unknownCommand(text);
