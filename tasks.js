@@ -46,6 +46,8 @@ function onDataReceived(text) {
     help();
   }else if(text.trim(" ") === 'list'){
     list();
+  }else if(text.split(" ")[0] === 'add'){
+    add(text.split(" ")[1]);
   }
   else{
     unknownCommand(text);
@@ -97,15 +99,22 @@ function help(){
  *
  * @returns {void}
  */
+ let tasks=['hello','help','exit OR quit','list'];
  function list(){
-let tasks=['hello','help','exit OR quit','list']
+
   for(let i=0;i<tasks.length;i++){
     console.log(i+'-'+tasks[i]);
     
   }
-    
+}
+
+/*
+
+ add
+ */
+ function add(c){
   
- 
+  tasks.push(c);
 }
 
 // The following line starts the application
