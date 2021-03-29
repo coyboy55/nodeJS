@@ -13,6 +13,9 @@ function startApp(name){
   process.stdin.resume();
   process.stdin.setEncoding('utf8');
   process.stdin.on('data', onDataReceived);
+  process.stdin.on('data', onDataReceived1);
+  
+
   console.log(`Welcome to ${name}'s application!`)
   console.log("--------------------")
 }
@@ -33,12 +36,26 @@ function startApp(name){
  * @param  {string} text data typed by the user
  * @returns {void}
  */
+  function onDataReceived1(text1){
+  if(text1.trim(" ") === 'yes'){
+  
+  
+
+ quit();
+}else if(text1.trim(" ") === 'no'){
+   quit();
+ }
+  }
+
 function onDataReceived(text) {
  // const text1=text.splite("");
  // console.log("hello "+text+"!");
  // text.replace(text,text+"\n");
   if (text.trim(" ") === 'quit' || text.trim(" ") === 'exit') {
-    quit();
+    console.log('do u want to exit? (yes/no)');
+    save();
+   onDataReceived1(text.trim(" "));
+ 
   }
   else if(text.split(" ")[0] === 'hello'){
     hello(text.split(" ")[1]);
@@ -183,6 +200,25 @@ let done="";
  function uncheck(I){
   tasks[I][1]=false;
   }
+  
+  function save(){
+    var fs = require('fs');
+    fs.appendFile('database.json', JSON.stringify(tasks) , function (err) {
+      if (err) throw err;
+     
+    });
+  }
+
+  try{
+  var fs1 = require('fs');
+fs1.readFile('database.json', 'utf8', function(err, data) {
+  if (err) throw err;
+  console.log(JSON.parse(data));
+});
+}catch(e){
+  console.log(e);
+  
+}
 
 
 // The following line starts the application
