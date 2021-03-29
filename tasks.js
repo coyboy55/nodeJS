@@ -51,7 +51,17 @@ function onDataReceived(text) {
   }else if(text.trim(" ") === 'remove'){
     tasks.pop();
   }else if(text.split(" ")[0] === 'remove'){
-    removeI(text.split(" ")[1])
+    removeI(text.split(" ")[1]);
+  }else if(text.trim(" ") === 'edit'){
+    console.log("ERROR");
+  }else if(text.split(" ")[0] === 'edit'){
+   if(text.split(" ").length===2){
+    edit(tasks.length-1,text.split(" ")[1])
+   }else if(text.split(" ").length===3){
+     edit(text.split(" ")[1],text.split(" ")[2]);
+   }else{
+     console.log("error");
+   }
   }
   else{
     unknownCommand(text);
@@ -130,8 +140,19 @@ function help(){
  function removeI(c){
    if(c>tasks.length-1){
      console.log("number does not exist");
-   }
+   }else{
    tasks.splice(c,1);
+   }
+}
+
+/*
+
+ edit
+ */
+ function edit(l,c){
+  
+  tasks[l]=c;
+  console.log(c+"was added");
 }
 
 // The following line starts the application
