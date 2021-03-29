@@ -178,7 +178,7 @@ let done="";
   }
 /*
 
- uncheck
+ uncheck for
  */
  function uncheck(I){
   tasks[I][1]=false;
