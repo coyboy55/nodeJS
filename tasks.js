@@ -58,10 +58,15 @@ function onDataReceived(text) {
    if(text.split(" ").length===2){
     edit(tasks.length-1,text.split(" ")[1])
    }else if(text.split(" ").length===3){
-     edit(text.split(" ")[1],text.split(" ")[2]);
+     if(text.split(" ")[1]>tasks.length-1){console.log("out of range");}else
+    { edit(text.split(" ")[1],text.split(" ")[2]);}
    }else{
      console.log("error");
    }
+  }else if(text.split(" ")[0] === 'check'){
+    check(parseInt(text.split(" ")[1]));
+  } else if(text.split(" ")[0] === 'uncheck'){
+    uncheck(parseInt(text.split(" ")[1]));
   }
   else{
     unknownCommand(text);
@@ -114,11 +119,20 @@ function help(){
  *
  * @returns {void}
  */
- let tasks=['hello','help','exit OR quit','list'];
+ let tasks=[['hello',true],['help',false],['exit OR quit',false],['list',true]];
+//  let done=['[',']'];
+//  let done1=[];
+//  for(let j=0;j<done.length;j++){
+//     done1.push(done[j]);
+//  }
+let done="";
  function list(){
-
+   
   for(let i=0;i<tasks.length;i++){
-    console.log(i+'-'+tasks[i]);
+    if(tasks[i][1]==true){
+      done="[✔]";}
+      else{done="[ ]"}
+    console.log(i+'-'+done+tasks[i][0]);
     
   }
 }
@@ -137,7 +151,7 @@ function help(){
 
  removeI
  */
- function removeI(c){
+ function removeI(c,){
    if(c>tasks.length-1){
      console.log("number does not exist");
    }else{
@@ -152,8 +166,11 @@ function help(){
  function edit(l,c){
   
   tasks[l]=c;
-  console.log(c+"was added");
+  console.log(l+" was edited");
 }
+
+
+
 
 // The following line starts the application
 startApp("fakher abu hamda")
