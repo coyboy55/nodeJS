@@ -58,8 +58,10 @@ function onDataReceived(text) {
  
   }
   else if(text.split(" ")[0] === 'hello'){
+   
     hello(text.split(" ")[1]);
   }else if (text.trim(" ") === 'help'){
+
     help();
   }else if(text.trim(" ") === 'list'){
     list();
@@ -168,7 +170,7 @@ let done="";
 
  removeI
  */
- function removeI(c,){
+ function removeI(c){
    if(c>tasks.length-1){
      console.log("number does not exist");
    }else{
@@ -200,13 +202,22 @@ let done="";
  function uncheck(I){
   tasks[I][1]=false;
   }
-  
+
+  let file="database.json";
   function save(){
-    var fs = require('fs');
-    fs.appendFile('database.json', JSON.stringify(tasks) , function (err) {
+    let fs = require('fs');
+    if( process.argv.length==2){
+    fs.appendFile(file, JSON.stringify(tasks) , function (err) {
       if (err) throw err;
      
     });
+  }
+  else if(process.argv.length==3){
+    fs.appendFile(process.argv[2], JSON.stringify(tasks) , function (err) {
+      if (err) throw err;
+     
+    });
+  }
   }
 
   try{
