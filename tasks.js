@@ -169,7 +169,20 @@ let done="";
   console.log(l+" was edited");
 }
 
+/*
 
+ check
+ */
+ function check(I){
+  tasks[I][1]=true;
+  }
+/*
+
+ uncheck
+ */
+ function uncheck(I){
+  tasks[I][1]=false;
+  }
 
 
 // The following line starts the application
